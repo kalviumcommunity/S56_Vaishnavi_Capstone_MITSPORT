@@ -39,6 +39,7 @@ router.put(
     }
 );
 
+
 router.delete('/deleteuser/:id', async (req, res) => {
     const { id } = req.params;
     try {
@@ -47,7 +48,7 @@ router.delete('/deleteuser/:id', async (req, res) => {
             return res.status(404).json({ message: "User not found" });
         }
         const result = await Mitsport.findByIdAndDelete(id);
-        res.json(result);
+        res.status(200).json(result);
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
