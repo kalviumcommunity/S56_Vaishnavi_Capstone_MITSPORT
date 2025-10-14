@@ -39,6 +39,8 @@ Deliver an intuitive, responsive UI
 🗃️ Database: MongoDB
 
 🔐 Authentication: JWT (JSON Web Tokens)
+
 https://github.com/kalviumcommunity/S56_Vaishnavi_Capstone_MITSPORT
+
 
 
