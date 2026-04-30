@@ -1,48 +1,82 @@
-.main-container {
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .main-heading {
-    margin-bottom: 30px;
-    color: #333;
-  }
-  
-  .sport-card {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-  
-  .card {
-    margin: 20px;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease-in-out;
-    max-width: 300px;
-  }
-  
-  .card:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-  }
-  
-  .card-img {
-    width: 100%;
-    border-radius: 8px;
-  }
-  
-  .card-title {
-    margin-top: 15px;
-    color: #000000;
-    font-family: "Kadwa", serif;
-  }
-  
-  .card-description {
-    margin-top: 10px;
-    color: #666;
-    text-align: justify;
-    font-family: "Kadwa", serif;
-  }
-  
+.detail-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.detail-header {
+  padding: 80px 40px 40px;
+  text-align: center;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.detail-header h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.detail-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 40px;
+}
+
+.sport-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 40px;
+}
+
+.sport-card-container {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+}
+
+.sport-card-container:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+}
+
+.card-img-container {
+  height: 200px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.sport-card-container:hover .card-img {
+  transform: scale(1.1);
+}
+
+.card-content {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin-bottom: 15px;
+}
+
+.card-description {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  flex-grow: 1;
+}

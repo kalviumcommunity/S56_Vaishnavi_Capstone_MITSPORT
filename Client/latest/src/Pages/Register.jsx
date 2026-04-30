@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import "./Register.css";
+import photo from "../images/game.jpg";
 import logo from "../images/Mit.jpeg";
-import picture from "../images/game.jpg";
-import photo from "../images/vector.jpg";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import "./Login.css"; // Reuse auth styles
 
 function Register() {
   const [Name, setName] = useState("");
@@ -13,32 +12,7 @@ function Register() {
   const [Sport, setSport] = useState("");
   const [Email, setEmail] = useState("");
   const [Timing, setTime] = useState("");
-  const [newData, setNewData] = useState([]);
   const navigate = useNavigate();
-
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-  };
-
-  const handlePhoneChange = (e) => {
-    setPhone(e.target.value);
-  };
-
-  const handleBatchChange = (e) => {
-    setBatch(e.target.value);
-  };
-
-  const handleSportChange = (e) => {
-    setSport(e.target.value);
-  };
-
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handleTimeChange = (e) => {
-    setTime(e.target.value);
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -56,108 +30,75 @@ function Register() {
       try {
         const response = await axios.post("http://localhost:3000/register", newRegistration);
         console.log("Registration successful:", response.data);
-        setNewData(response.data);
-        navigate('/batch');
+        
+        // Save to my pass section
+        const passDetails = {
+            name: Name,
+            batch: Batch,
+            sport: Sport,
+            timing: Timing,
+            date: new Date().toLocaleDateString()
+        };
+        localStorage.setItem("myRegistration", JSON.stringify(passDetails));
+        
+        navigate('/my-registration');
       } catch (error) {
-        console.log(error);
+        console.log("Backend error, but continuing to save locally:", error);
+        alert("Warning: Backend database connection failed (check your MongoDB URI). Saving to your My Pass locally!");
+        
+        // Save to my pass section even if DB fails
+        const passDetails = {
+            name: Name,
+            batch: Batch,
+            sport: Sport,
+            timing: Timing,
+            date: new Date().toLocaleDateString()
+        };
+        localStorage.setItem("myRegistration", JSON.stringify(passDetails));
+        
+        navigate('/my-registration');
       }
     }
   };
 
   return (
-    <div>
-      <div className="background-container">
-        <img height={670} className="background-image" src={photo} alt="Background photo" />
+    <div className="auth-page">
+      <img className="auth-bg" src={photo} alt="Background" />
+      <div className="auth-overlay"></div>
+      
+      <div className="auth-container glass-panel" style={{ maxWidth: '500px' }}>
+        <div className="auth-header">
+          <img src={logo} alt="MIT Logo" style={{ borderRadius: '50%', objectFit: 'cover', width: '80px', height: '80px' }} />
+          <h1 className="text-gradient">Register Batch</h1>
+          <p className="auth-subtitle">Add a new sports batch</p>
+        </div>
+
+        <form className="auth-form" onSubmit={handleSubmit}>
+          <div className="input-group">
+            <input type="text" placeholder="Instructor Name" value={Name} onChange={(e) => setName(e.target.value)} required />
+          </div>
+          <div className="input-group">
+            <input type="text" placeholder="Phone Number" value={Phone} onChange={(e) => setPhone(e.target.value)} required />
+          </div>
+          <div className="input-group">
+            <input type="email" placeholder="Email Address" value={Email} onChange={(e) => setEmail(e.target.value)} required />
+          </div>
+          <div className="input-group">
+            <input type="text" placeholder="Batch Name" value={Batch} onChange={(e) => setBatch(e.target.value)} required />
+          </div>
+          <div className="input-group">
+            <input type="text" placeholder="Sport" value={Sport} onChange={(e) => setSport(e.target.value)} required />
+          </div>
+          <div className="input-group">
+            <input type="time" placeholder="Timing" value={Timing} onChange={(e) => setTime(e.target.value)} required />
+          </div>
+          <button type="submit" className="btn-primary auth-btn">Register</button>
+        </form>
+
+        <div className="auth-footer">
+          <Link to="/batch">Cancel & Go Back</Link>
+        </div>
       </div>
-      <div className="logo-container">
-        <img width={150} className="logo-image" src={logo} alt="logo photo" />
-      </div>
-      <div className="side-image-container">
-        <img width={400} height={490} className="side-image" src={picture} alt="side img" />
-      </div>
-      <form onSubmit={handleSubmit} className="register-form">
-        <div className="form-group">
-          <label htmlFor="Name" className="label-name">
-          </label>
-          <input
-            type="text"
-            id="Name"
-            value={Name}
-            onChange={handleNameChange}
-            required
-            className="input-name"
-            placeholder="Enter your name"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="Phone" className="label-phone">
-          </label>
-          <input
-            type="text"
-            id="Phone"
-            value={Phone}
-            onChange={handlePhoneChange}
-            required
-            className="input-phone"
-            placeholder="Enter your phone number"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="Batch" className="label-batch">
-          </label>
-          <input
-            type="text"
-            id="Batch"
-            value={Batch}
-            onChange={handleBatchChange}
-            required
-            className="input-batch"
-            placeholder="Enter your batch"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="Sport" className="label-sport">
-          </label>
-          <input
-            type="text"
-            id="Sport"
-            value={Sport}
-            onChange={handleSportChange}
-            required
-            className="input-sport"
-            placeholder="Enter your sport"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="Email" className="label-email">
-          </label>
-          <input
-            type="email"
-            id="Email"
-            value={Email}
-            onChange={handleEmailChange}
-            required
-            className="input-email"
-            placeholder="Enter your email"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="Time" className="label-time">
-          </label>
-          <input
-            type="time"
-            id="Time"
-            value={Timing}
-            onChange={handleTimeChange}
-            required
-            className="input-time"
-            placeholder="Enter your time"
-          />
-        </div>
-        <button type="submit" className="submit-button">
-          Register
-        </button>
-      </form>
     </div>
   );
 }

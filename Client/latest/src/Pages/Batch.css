@@ -1,27 +1,35 @@
-
-.Sent{
-    color: rgb(255, 0, 0);
+.batch-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.explore-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #ff0000;
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-family: "Kadwa", serif;
-    margin-top: 16%;
-    margin-bottom: 2%;
-    margin-left: 85%;
+.batch-header {
+  padding: 80px 40px 40px;
+  text-align: center;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.explore-button:hover {
-    background-color: #721302;
+.batch-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  line-height: 1.3;
 }
 
-.display{
-    display: grid;
-    grid-template-columns: auto auto auto;
+.batch-actions {
+  margin-top: 30px;
+}
+
+.batch-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 40px;
+  width: 100%;
+}
+
+.display-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
 }

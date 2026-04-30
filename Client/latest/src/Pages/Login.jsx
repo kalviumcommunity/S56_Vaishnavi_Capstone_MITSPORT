@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import photo from "../images/geound.jpg";
-import football from "../images/OIP.jpeg";
-import mitImage from "../images/Mit.jpeg"
+import bgImage from "../images/geound.jpg";
+import mitImage from "../images/Mit.jpeg";
 import "./Login.css";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
     password: ""
@@ -23,58 +22,48 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Submitted Form Data:", formData);
-    setFormData({
-      username: "",
-      password: ""
-    });
+    // Normally you'd authenticate here. We simulate success and redirect.
+    navigate("/home");
   };
 
   return (
-    <div>
-      <div className="backgroundimg1">
-        <img height={660} width={1260} src={photo} />
-      </div>
-      <div className="mit">
-        <img className="mitimg" src={mitImage} alt="MIT Logo" />
-      </div>
-
-      <Link to="/signup">
-              <input type="submit" className="btnn" value="Signup" />
-            </Link>
+    <div className="auth-page">
+      <img className="auth-bg" src={bgImage} alt="Background" />
+      <div className="auth-overlay"></div>
       
-      <div className="login">
-        <h1 className="text0">Login</h1>
-      </div>
-      <div className="login-container">
-        <img className="football-img" src={football} alt="Football" />
-        <div className="login-box">
-          <h2 className="center-text">"Step onto the field of champions with every login."</h2>
-          <form onSubmit={handleSubmit}>
-            <div className="textbox">
-              <input 
-                type="text" 
-                placeholder="Username" 
-                name="username" 
-                value={formData.username} 
-                onChange={handleInputChange} 
-                required 
-              />
-            </div>
-            <div className="textbox">
-              <input 
-                type="password" 
-                placeholder="Password" 
-                name="password" 
-                value={formData.password} 
-                onChange={handleInputChange} 
-                required 
-              />
-            </div>
-            <Link to="/Home">
-              <input type="submit" className="btn" value="Login" />
-            </Link>
+      <div className="auth-container glass-panel">
+        <div className="auth-header">
+          <img src={mitImage} alt="MIT Logo" style={{ borderRadius: '50%', objectFit: 'cover', width: '80px', height: '80px' }} />
+          <h1 className="text-gradient">Welcome Back</h1>
+          <p className="auth-subtitle">Step onto the field of champions</p>
+        </div>
 
-          </form>
+        <form className="auth-form" onSubmit={handleSubmit}>
+          <div className="input-group">
+            <input 
+              type="text" 
+              placeholder="Username" 
+              name="username" 
+              value={formData.username} 
+              onChange={handleInputChange} 
+              required 
+            />
+          </div>
+          <div className="input-group">
+            <input 
+              type="password" 
+              placeholder="Password" 
+              name="password" 
+              value={formData.password} 
+              onChange={handleInputChange} 
+              required 
+            />
+          </div>
+          <button type="submit" className="btn-primary auth-btn">Login</button>
+        </form>
+
+        <div className="auth-footer">
+          Don't have an account? <Link to="/signup">Sign up</Link>
         </div>
       </div>
     </div>

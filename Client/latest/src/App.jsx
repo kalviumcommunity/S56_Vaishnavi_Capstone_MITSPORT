@@ -10,6 +10,9 @@ import Batch from "./Pages/Batch";
 import UpdateForm from "./Pages/Updateform";
 import Signup from "./Pages/Signup";
 import Welcome from "./Pages/Welcome";
+import BackToTop from "./Components/BackToTop";
+
+import MyRegistration from "./Pages/MyRegistration";
 
 function App() {
   return (
@@ -25,7 +28,9 @@ function App() {
         <Route path="/batch" element={<Batch />} />
         <Route path="/updateform/:id" element={<UpdateForm />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/my-registration" element={<MyRegistration />} />
       </Routes>
+      <BackToTop />
     </BrowserRouter>
   );
 }

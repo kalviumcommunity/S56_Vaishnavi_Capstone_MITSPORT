@@ -3,100 +3,131 @@ import { Link } from "react-router-dom";
 import "./Home.css";
 import image from "../images/skate.webp";
 import Nav from "../Components/Nav";
-import running from "../images/running.jpeg";
 
 function Home() {
   return (
-    <div>
+    <div className="home-page">
       <Nav />
-      <div className="Main">
-        <div className="search">
-          <input type="search" id="search-input" placeholder="search" />
-        </div>
-        <div className="batch-button">
-          <Link to="/Batch"><button className="batch">Check Batches</button></Link>
-        </div>
-        <div className="background">
-          <img height={500} src={image} alt="background" />
-        </div>
-        <div className="text1">
-          <h2>"Fuel your passion for sports and ignite your journey to greatness with ALLMITSPORT - where every athlete finds their winning edge!"</h2>
-        </div>
-        {/* <div className="button">
-            <Link to="/Register"><button className="explore-button">Register</button></Link>
-        </div> */}
-      </div>
-      <div className="Home-container">
-        <div className="Specialization">
-          <h2 className="special-h2">Specialization</h2>
-          <h1 className="special-h1">Your Partner in Sports Excellence</h1>
-          <img className="running-img" src={running} alt="ruuning everyday is good for health" />
-          <h1 className="special">Our Value : </h1>
-          <h2 className="special-h2">Passion for Athletics</h2>
-          <h3 className="special-h3">We are passionate about sports and<br></br> committed to helping athletes achieve<br></br> success in all areas of their lives.</h3>
-          <h2 className="specialization-h2">Excellence in Coaching and Training</h2>
-          <h3 className="specialization-h3">We strive for excellence in coaching<br></br> and training, providing the highest quality guidance<br></br> and support to help athletes reach their full potential.</h3>
-          <h2 className="Community">Community Engagement</h2>
-          <h3 className="Community-h3">It could foster a sense of community <br></br>among students, faculty, alumni, and sports <br></br>enthusiasts by providing a platform to share news, updates,<br></br> and discussions about college sports events and achievements.</h3>
+      
+      {/* Live Ticker */}
+      <div className="ticker-wrap">
+        <div className="ticker-title">LIVE UPDATES</div>
+        <div className="ticker">
+          <span className="ticker-item">🎯 Archery tryouts starting next week! Sign up now.</span>
+          <span className="ticker-item">🏆 MIT wins the Inter-College Football Cup!</span>
+          <span className="ticker-item">🏀 New basketball batches open for beginners.</span>
+          <span className="ticker-item">🏊‍♂️ Swimming pool maintenance scheduled for this Sunday.</span>
+          <span className="ticker-item">🎾 Table tennis tournament registration closes tomorrow.</span>
         </div>
       </div>
-      <div className="Our-service">
-        <div className="our-service-text">
-          <h2 className="service">Our Services</h2>
-          <h1 className="Service-text">Empowering You to Achieve Sports Excellence</h1>
+
+      {/* Hero Section */}
+      <section className="hero-section">
+        <img className="hero-bg" src={image} alt="Background" />
+        <div className="hero-content">
+          <h1 className="hero-title text-gradient">Fuel your passion for sports</h1>
+          <p className="hero-subtitle">Ignite your journey to greatness with ALLMITSPORT - where every athlete finds their winning edge!</p>
+          <div className="search-bar">
+            <input type="search" placeholder="Search for sports, batches, news..." />
+          </div>
+          <Link to="/Batch"><button className="btn-primary">Check Batches</button></Link>
         </div>
-        <div className="service-box-container">
-          <div className="service-box">
-            <h2 className="service-box-heading">Sports Information: </h2>
-            <h2 className="service-box-text">Get comprehensive information about various sports and their rules. Stay up-to-date with the latest news, schedules, and scores.</h2>
-            <button className="sevice-btn">Get Started</button>
-          </div>
-          <div className="service-box">
-            <h2 className="service-box-heading">Sports Community : </h2>
-            <h2 className="service-box-text">Join our sports community to connect with other enthusiasts, find events, and share your passion.</h2>
-            <button className="sevice-btn">Get Started</button>
-          </div>
-          <div className="service-box">
-            <h2 className="service-box-heading">Sports News & Analysis: </h2>
-            <h2 className="service-box-text">Stay up-to-date with the latest sports news, analysis, and commentary from our experts.</h2>
-            <button className="sevice-btn">Get Started</button>
-          </div>
-          <div className="service-box">
-            <h2 className="service-box-heading">Sports Registration: </h2>
-            <h2 className="service-box-text">Register for sports events and programs with ease, including custom forms and payment processing.</h2>
-            <button className="sevice-btn">Get Started</button>
-          </div>
-          <div className="service-box">
-            <h2 className="service-box-heading">Secure Login: </h2>
-            <h2 className="service-box-text">Access exclusive sports content and features with a secure login.</h2>
-            <button className="sevice-btn">Get Started</button>
-          </div>
-          <div className="service-box">
-            <h2 className="service-box-heading">Sports Community Platform: </h2>
-            <h2 className="service-box-text">Engage with your fellow sports enthusiasts through our sports community platform</h2>
-            <button className="sevice-btn">Get Started</button>
+      </section>
+
+      {/* Daily Tip Section (Overlapping Hero) */}
+      <div className="daily-tip-container">
+        <div className="daily-tip-card">
+          <div className="tip-icon">💡</div>
+          <div className="tip-content">
+            <h3>Daily Fitness Tip</h3>
+            <p>Consistency is key. A 20-minute workout every day is more effective than a 2-hour workout once a week. Stay active, stay hydrated, and always remember to stretch before hitting the field!</p>
           </div>
         </div>
-        <footer className="footer">
-          <div className="container">
-            <div className="row">
-              <div className="col-md-6">
-                <p>&copy; {new Date().getFullYear()} Your Website Name. All Rights Reserved.</p>
-              </div>
-              
-                <p className="para0">ALLMITSPORT is your ultimate destination for all things sports! Stay updated with the latest news, scores, and highlights from the world of Sports Category. Connect with us on social media for more exciting content.<br></br>Feel free to adjust the content and design according to your website's specific needs and branding!<br></br>"At ALLMITSPORT, we are passionate about promoting sports excellence and fostering a community of athletes, enthusiasts, and fans. Our mission is to provide comprehensive coverage of various sports, from football to tennis, and to keep our audience informed about the latest news, events, and developments in the world of sports. Whether you're an aspiring athlete looking for training tips or a dedicated fan seeking updates on your favorite teams, ALLMITSPORT is your ultimate destination. Join us in celebrating the spirit of sportsmanship and camaraderie, as we strive to inspire and empower individuals to achieve their athletic goals."</p>
-              
-              <div className="col-md-6">
-                <ul className="footer-links">
-                  <li><a href="#">Privacy Policy</a></li>
-                  <li><a href="#">Terms of Use</a></li>
-                  <li><a href="#">Contact Us</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </footer>
       </div>
+
+      {/* Specialization Section */}
+      <section className="specialization-section">
+        <h2 className="section-title">Specialization</h2>
+        <h3 className="section-subtitle">Your Partner in Sports Excellence</h3>
+        
+        <div className="specialization-grid">
+          <div className="spec-card glass-panel">
+            <h3>Passion for Athletics</h3>
+            <p>We are passionate about sports and committed to helping athletes achieve success in all areas of their lives.</p>
+          </div>
+          <div className="spec-card glass-panel">
+            <h3>Coaching & Training</h3>
+            <p>We strive for excellence in coaching and training, providing the highest quality guidance and support to help athletes reach their full potential.</p>
+          </div>
+          <div className="spec-card glass-panel">
+            <h3>Community Engagement</h3>
+            <p>It fosters a sense of community among students, faculty, alumni, and sports enthusiasts by providing a platform to share news, updates, and discussions about college sports events and achievements.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="services-section">
+        <h2 className="section-title text-gradient">Our Services</h2>
+        <h3 className="section-subtitle">Empowering You to Achieve Sports Excellence</h3>
+        
+        <div className="services-grid">
+          <div className="service-box glass-panel">
+            <h2>Sports Information</h2>
+            <p>Get comprehensive information about various sports and their rules. Stay up-to-date with the latest news, schedules, and scores.</p>
+            <button className="btn-primary">Get Started</button>
+          </div>
+          <div className="service-box glass-panel">
+            <h2>Sports Community</h2>
+            <p>Join our sports community to connect with other enthusiasts, find events, and share your passion.</p>
+            <button className="btn-primary">Get Started</button>
+          </div>
+          <div className="service-box glass-panel">
+            <h2>News & Analysis</h2>
+            <p>Stay up-to-date with the latest sports news, analysis, and commentary from our experts.</p>
+            <button className="btn-primary">Get Started</button>
+          </div>
+          <div className="service-box glass-panel">
+            <h2>Sports Registration</h2>
+            <p>Register for sports events and programs with ease, including custom forms and payment processing.</p>
+            <button className="btn-primary">Get Started</button>
+          </div>
+          <div className="service-box glass-panel">
+            <h2>Secure Login</h2>
+            <p>Access exclusive sports content and features with a secure, seamless authentication system.</p>
+            <button className="btn-primary">Get Started</button>
+          </div>
+          <div className="service-box glass-panel">
+            <h2>Platform Engagement</h2>
+            <p>Engage with your fellow sports enthusiasts through our dedicated sports community platform.</p>
+            <button className="btn-primary">Get Started</button>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="footer">
+        <div className="footer-content">
+          <div className="footer-about">
+            <h3 className="text-gradient">ALLMITSPORT</h3>
+            <p>
+              ALLMITSPORT is your ultimate destination for all things sports! Stay updated with the latest news, scores, and highlights from the world of Sports. 
+              At ALLMITSPORT, we are passionate about promoting sports excellence and fostering a community of athletes, enthusiasts, and fans. Join us in celebrating the spirit of sportsmanship.
+            </p>
+          </div>
+          <div className="footer-links-container">
+            <ul className="footer-links">
+              <li><Link to="/about">About Us</Link></li>
+              <li><Link to="/contact">Contact Us</Link></li>
+              <li><Link to="/terms">Terms of Use</Link></li>
+              <li><Link to="/privacy">Privacy Policy</Link></li>
+            </ul>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <p>&copy; {new Date().getFullYear()} ALLMITSPORT. All Rights Reserved.</p>
+        </div>
+      </footer>
     </div>
   );
 }

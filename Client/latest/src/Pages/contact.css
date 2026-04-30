@@ -1,56 +1,89 @@
-
-.main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.contact-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.heading {
-    text-align: center;
-    font-family: "Kadwa", serif;
+.contact-header {
+  padding: 80px 40px 40px;
+  text-align: center;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.contact-box {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+.contact-header h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
 }
 
-.box {
-    background-color: #f0f0f0;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 300px; 
-    margin-bottom: 40px;
-    
+.contact-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 40px;
 }
 
-.box:hover {
-    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-  }
-
-.contact-img {
-    width: 100%; 
-    border-radius: 8px;
-    margin-bottom: 10px; 
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 40px;
 }
 
-
-.contact-title {
-    margin-top: 0; 
-    margin-bottom: 10px; 
-    text-align: center;
-    font-family: "Kadwa", serif;
+.contact-card-container {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
 }
 
-.contact-name,
-.contact-no {
-    margin: 0; 
-    font-size: 14px;
-    font-family: "Kadwa", serif;
+.contact-card-container:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+}
+
+.card-img-container {
+  height: 200px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.contact-card-container:hover .card-img {
+  transform: scale(1.1);
+}
+
+.card-content {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin-bottom: 5px;
+}
+
+.card-subtitle {
+  color: var(--accent-primary);
+  font-weight: 500;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+
+.card-description {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+  flex-grow: 1;
 }

@@ -4,10 +4,12 @@ import "./Welcome.css"
 import welcomelogo from "../images/MITlogo.png"
 import fitness from "../images/fitness.jpeg"
 
-
 function Welcome() {
   return (
-    <div>
+    <div className="welcome-page">
+      <img className="welcome-bg" src={fitness} alt="Fitness Background" />
+      <div className="welcome-overlay"></div>
+      
       <nav className="navbar">
         <div className="navbar-logo">
           <img src={welcomelogo} alt="Logo" />
@@ -17,18 +19,15 @@ function Welcome() {
             <Link to="/login" className="navbar-link">Login</Link>
           </li>
           <li className="navbar-item">
-            <Link to="/signup" className="navbar-link">Signup</Link>
+            <Link to="/signup" className="btn-primary">Signup</Link>
           </li>
         </ul>
       </nav>
-      <div className="welcome-container">
-        <img width={1265} height={550} src={fitness} alt="fitness is everything" />
-      <div className="Welcome">
-        <h1 className="welcome-text">ALLMITSPORT: Uniting Fans Through Insightful Content</h1>
+      
+      <div className="welcome-content glass-panel">
+        <h1 className="welcome-text text-gradient">ALLMITSPORT: Uniting Fans Through Insightful Content</h1>
         <h3 className="welcome-update">Explore ALLMITSPORT's dedication to sports journalism, community, and engaging analysis on various athletics topics.</h3>
-        <button className="learn-more-btn">Learn More</button>
-      </div>
-
+        <Link to="/home"><button className="btn-primary">Explore Now</button></Link>
       </div>
     </div>
   );

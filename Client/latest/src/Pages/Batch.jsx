@@ -23,25 +23,23 @@ function Batch() {
     }, []);
     
     return (
-        <>
+        <div className="batch-page">
             <Nav />
-            <div className="heading">
-                <div className="Sentence">
-                    <h1 className="Sent">"Discover your next sporting adventure at ALLMITSPORT's dynamic batch offerings!" 🏋️‍♂️💪</h1>
+            <div className="batch-header">
+                <h1 className="text-gradient">Discover your next sporting adventure<br/>at ALLMITSPORT's dynamic batches! 🏋️‍♂️💪</h1>
+                <div className="batch-actions">
+                    <Link to="/Register"><button className="btn-primary">Register New Batch</button></Link>
                 </div>
-                <div className="button">
-                    <Link to="/Register"><button className="explore-button">Register</button></Link>
-                </div>
+            </div>
 
-                
-
-                <div className="display">
+            <div className="batch-content">
+                <div className="display-grid">
                     {data.map((ele, i) => (
                         <Card key={i} {...ele} fetchData={fetchData} />
                     ))}
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 
